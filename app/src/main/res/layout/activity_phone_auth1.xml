@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="414dp"
+        android:layout_height="259dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/requestVerification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002">
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/logo_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@mipmap/logo_image_foreground" />
+
+        <TextView
+            android:id="@+id/logoNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:fontFamily="@font/righteous"
+            android:gravity="center"
+            android:text="@string/rakt_logo"
+            android:textColor="#3A1A1A"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/logoImageView"
+            app:layout_constraintVertical_bias="0.629"
+            tools:layout_editor_absoluteX="0dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/requestVerification"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        android:background="@drawable/custome_edittext"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        tools:layout_editor_absoluteX="-95dp">
+
+        <TextView
+            android:id="@+id/prefix"
+            android:layout_width="54dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:text="@string/prefixNumber"
+            android:fontFamily="@font/righteous"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/phoneNoEditView"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="55dp"
+            android:autofillHints=""
+            android:background="@null"
+            android:ems="10"
+            android:fontFamily="@font/righteous"
+            android:hint="@string/mobile_number_hint"
+            android:inputType="phone"
+            android:text="@string/mobileNumberInput"
+            android:textColor="#000000" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/requestVerification"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/get_started_button_design"
+        android:fontFamily="@font/righteous"
+        android:text="@string/request_verification"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:onClick="openPhoneAuth2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.661"
+        tools:ignore="OnClick" />
+
+    <ImageView
+        android:id="@+id/wave2ImageView"
+        android:layout_width="0dp"
+        android:layout_height="243dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/wave2image"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/wave2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
