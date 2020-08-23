@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "733395091765",
+    "firebase_url": "https://rakt-34644.firebaseio.com",
+    "project_id": "rakt-34644",
+    "storage_bucket": "rakt-34644.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733395091765:android:5634fa4f0bb8a492540c7c",
+        "android_client_info": {
+          "package_name": "com.rakt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733395091765-krpso9sog6fv42gf7rslaglee0k65uhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV_3WegQKYrltCn7euNOY9gjXugyXo4Sg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733395091765-krpso9sog6fv42gf7rslaglee0k65uhi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
