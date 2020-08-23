@@ -9,26 +9,26 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/getStartedButton"
+        android:layout_height="260dp"
+        app:layout_constraintBottom_toBottomOf="@+id/wave1ImageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19">
 
         <ImageView
             android:id="@+id/logoImageView"
-            android:layout_width="404dp"
-            android:layout_height="220dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:contentDescription="@string/logo_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.188"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.114"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@mipmap/logo_image_foreground" />
 
         <TextView
@@ -41,41 +41,41 @@
             android:textColor="#3A1A1A"
             android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/logoImageView"
-            app:layout_constraintVertical_bias="0.606"
-            tools:layout_editor_absoluteX="0dp" />
-
+            app:layout_constraintVertical_bias="0.629" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <Button
         android:id="@+id/getStartedButton"
-        android:layout_width="307dp"
-        android:layout_height="77dp"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="12dp"
         android:background="@drawable/get_started_button_design"
         android:fontFamily="@font/righteous"
+        android:onClick="openPhoneAuth1"
         android:text="@string/getstartedButton"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:onClick="openPhoneAuth1"
-        app:layout_constraintBottom_toTopOf="@+id/wave1ImageView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924" />
+        app:layout_constraintVertical_bias="0.59000003" />
 
     <ImageView
         android:id="@+id/wave1ImageView"
-        android:layout_width="0dp"
-        android:layout_height="243dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="245dp"
         android:contentDescription="@string/wave1image"
         android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/wave1" />
 
 

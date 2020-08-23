@@ -8,10 +8,9 @@
     <string name="mobile_number_hint">Mobile Number</string>
     <string name="request_verification">Request Verification</string>
     <string name="prefixNumber">+91</string>
-    <string name="mobileNumberInput"></string>
+    <string name="mobileNumberInput" ></string>
     <string name="wave2image">wave2image</string>
     <string name="verify">Verify</string>
-    <string name="enter_otp">One Time Password</string>
-    <string name="enter_otp_hint">Enter OTP</string>
+    <string name="enter_otp_hint">One Time Password</string>
 
 </resources>
