@@ -72,7 +72,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/phoneNoEditView"
+            android:id="@+id/phoneEditText"
             android:layout_width="300dp"
             android:maxLength="10"
             android:layout_height="55dp"
@@ -99,14 +99,12 @@
         android:text="@string/request_verification"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:onClick="openPhoneAuth2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.661"
-        tools:ignore="OnClick" />
+        app:layout_constraintVertical_bias="0.661" />
 
     <ImageView
         android:id="@+id/wave2ImageView"
