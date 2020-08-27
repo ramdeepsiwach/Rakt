@@ -3,22 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#FFFFFF"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="414dp"
-        android:layout_height="259dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/verify"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36">
+        app:layout_constraintVertical_bias="0.19">
 
         <ImageView
             android:id="@+id/logoImageView"
@@ -40,7 +39,7 @@
             android:gravity="center"
             android:text="@string/rakt_logo"
             android:textColor="#3A1A1A"
-            android:textSize="50sp"
+            android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@+id/logoImageView"
             app:layout_constraintVertical_bias="0.629"
@@ -50,44 +49,41 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custome_edittext"
+        android:background="@drawable/custom_edit_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47000003">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/prefix"
             android:layout_width="54dp"
             android:layout_height="55dp"
-            android:fontFamily="@font/righteous"
+            android:fontFamily="@font/roboto"
             android:gravity="center"
             android:text="@string/prefixNumber"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/phoneNoEditView"
-            android:layout_width="300dp"
+            android:layout_width="290dp"
             android:layout_height="55dp"
             android:layout_marginStart="55dp"
             android:autofillHints=""
             android:background="@null"
+            android:maxLength="10"
             android:ems="10"
+            android:textSize="18sp"
             android:fontFamily="@font/roboto"
             android:hint="@string/mobile_number_hint"
             android:inputType="phone"
-            android:maxLength="10"
             android:text="@string/mobileNumberInput"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textColor="#000000" />
 
     </FrameLayout>
 
@@ -97,17 +93,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/custome_edittext"
+        android:background="@drawable/custom_edit_text"
         app:layout_constraintBottom_toBottomOf="@+id/wave2ImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59000003">
+        app:layout_constraintVertical_bias="0.6">
 
 
         <EditText
             android:id="@+id/otpEditText"
-            android:layout_width="300dp"
+            android:layout_width="290dp"
             android:layout_height="55dp"
             android:layout_marginStart="10dp"
             android:autofillHints=""
@@ -119,8 +115,7 @@
             android:maxLength="6"
             android:text="@string/mobileNumberInput"
             android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/resendOtp"
@@ -141,10 +136,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/get_started_button_design"
-        android:fontFamily="@font/righteous"
+        android:fontFamily="@font/roboto"
         android:text="@string/verify"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
@@ -154,8 +149,8 @@
 
     <ImageView
         android:id="@+id/wave2ImageView"
-        android:layout_width="0dp"
-        android:layout_height="243dp"
+        android:layout_width="match_parent"
+        android:layout_height="245dp"
         android:layout_weight="1"
         android:contentDescription="@string/wave2image"
         android:scaleType="fitEnd"
@@ -165,6 +160,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/wave2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@mipmap/back_button_logo_round"
+        android:gravity="center"
+        android:onClick="openPhoneAuth1FromPhoneAuth2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="OnClick" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
