@@ -29,7 +29,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@mipmap/logo_image_foreground" />
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_drop" />
 
         <TextView
             android:id="@+id/logoNameTextView"
@@ -125,7 +126,7 @@
             android:layout_marginStart="300dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
-            android:background="@mipmap/resend_image_round"
+            android:background="@drawable/resend_image_foreground"
             android:fontFamily="@font/righteous" />
 
     </FrameLayout>
@@ -136,7 +137,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/get_started_button_design"
+        android:background="@drawable/button_background_design"
         android:fontFamily="@font/roboto"
         android:text="@string/verify"
         android:textColor="#FFFFFF"
@@ -160,13 +161,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/wave2" />
+        app:srcCompat="@drawable/ic_wave3" />
 
     <Button
         android:id="@+id/back"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:background="@mipmap/back_button_logo_round"
+        android:background="@drawable/back_button"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

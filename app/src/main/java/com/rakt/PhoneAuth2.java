@@ -56,7 +56,6 @@ public class PhoneAuth2 extends AppCompatActivity {
                 verifyVerificationCode(code);
             }
         });
-
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +64,6 @@ public class PhoneAuth2 extends AppCompatActivity {
             }
         });
     }
-
     //the method is sending verification code
     //the country id is concatenated
     //you can take the country id as user input as well
@@ -77,15 +75,12 @@ public class PhoneAuth2 extends AppCompatActivity {
                 TaskExecutors.MAIN_THREAD,
                 mCallbacks);
     }
-
     //the callback to detect the verification status
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-
             //Getting the code sent by SMS
             String code = phoneAuthCredential.getSmsCode();
-
             //sometime the code is not detected automatically
             //in this case the code will be null
             //so user has to manually enter the code
@@ -95,12 +90,10 @@ public class PhoneAuth2 extends AppCompatActivity {
                 verifyVerificationCode(code);
             }
         }
-
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Toast.makeText(PhoneAuth2.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
         @Override
         public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
@@ -109,8 +102,6 @@ public class PhoneAuth2 extends AppCompatActivity {
             mVerificationId = s;
         }
     };
-
-
     private void verifyVerificationCode(String code) {
         //creating the credential
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
@@ -126,25 +117,20 @@ public class PhoneAuth2 extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //verification successful we will start the profile activity
-                            Intent intent = new Intent(PhoneAuth2.this, MainActivity.class);    //Todo : Update Class name
+                            Intent intent = new Intent(PhoneAuth2.this, HomeActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 
                         } else {
-
                             //verification unsuccessful.. display an error message
-
                             String message = "Something is wrong, we will fix it soon...";
-
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 message = "Invalid code entered...";
                             }
-
                             Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
                             snackbar.setAction("Dismiss", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
                                 }
                             });
                             snackbar.show();
