@@ -23,6 +23,8 @@
     <string name="aboutInSettingsString">About</string>
     <string name="report_a_bugInSettingsString">Report a Bug</string>
     <string name="logoutInSettingsString">Logout</string>
+    <string name="searchButtonString">Search</string>
+    <string name="be_a_donorString">Be a Donor</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 </resources>
