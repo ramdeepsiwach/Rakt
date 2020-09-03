@@ -143,7 +143,7 @@ public class PhoneAuth2 extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //verification successful we will start the profile activity
-                            Intent intent = new Intent(PhoneAuth2.this, MainActivity.class);    //Todo : Update Class name
+                            Intent intent = new Intent(PhoneAuth2.this, HomeActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 

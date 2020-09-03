@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            // startActivity(new Intent(this, Home.class)); Todo: Update class name as per requirement
+            startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
         setContentView(R.layout.activity_main);
