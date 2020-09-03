@@ -8,9 +8,21 @@
     <string name="mobile_number_hint">Mobile Number</string>
     <string name="request_verification">Request Verification</string>
     <string name="prefixNumber">+91</string>
-    <string name="mobileNumberInput" ></string>
+    <string name="mobileNumberInput"></string>
     <string name="wave2image">wave2image</string>
     <string name="verify">Verify</string>
     <string name="enter_otp_hint">One Time Password</string>
+    <string name="accountInSettingsString">Account</string>
+    <string name="optionsInSettingsString">Options</string>
+    <string name="edit_profileInSettingsString">Edit Profile</string>
+    <string name="change_phone_numberInSettingsString">Change Phone Number</string>
+    <string name="settingsInSettingsString">Settings</string>
+    <string name="notificationsInSettingsString">Notifications</string>
+    <string name="change_languageInSettingsString">Change Language</string>
+    <string name="moreInSettingsString">More</string>
+    <string name="aboutInSettingsString">About</string>
+    <string name="report_a_bugInSettingsString">Report a Bug</string>
+    <string name="logoutInSettingsString">Logout</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 </resources>

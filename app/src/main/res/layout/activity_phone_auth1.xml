@@ -30,7 +30,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@mipmap/logo_image_foreground" />
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_drop" />
 
         <TextView
             android:id="@+id/logoNameTextView"
@@ -94,7 +95,7 @@
         android:layout_width="280dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:background="@drawable/get_started_button_design"
+        android:background="@drawable/button_background_design"
         android:fontFamily="@font/roboto"
         android:text="@string/request_verification"
         android:textColor="#FFFFFF"
@@ -117,7 +118,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/wave2" />
+        app:srcCompat="@drawable/ic_wave2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
