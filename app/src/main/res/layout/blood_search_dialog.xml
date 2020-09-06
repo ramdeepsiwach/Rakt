@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="329dp"
+    android:background="@drawable/custom_dialog_box"
+    android:layout_height="237dp"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_marginTop="21dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="18dp"
+        android:layout_width="300dp"
+        android:layout_height="43dp">
+
+        <TextView
+            android:layout_width="130dp"
+            android:textColor="#80000000"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:text="@string/blood_groupString" />
+
+        <Spinner
+            android:id="@+id/bloodGroudDropDown"
+            android:layout_width="157dp"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/custom_dropdown"
+            android:layout_height="match_parent"
+            android:layout_marginStart="143dp"
+            android:textColor="#80000000"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="18dp"
+        android:layout_width="300dp"
+        android:layout_height="43dp" >
+
+        <TextView
+            android:layout_width="130dp"
+            android:textColor="#80000000"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:text="@string/search_distanceString" />
+
+        <Spinner
+            android:id="@+id/dsitanceGroudDropDown"
+            android:layout_width="157dp"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/custom_dropdown"
+            android:layout_height="match_parent"
+            android:layout_marginStart="143dp"
+            android:textColor="#80000000"
+            android:textSize="18sp" />
+    </FrameLayout>
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="203dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/searchButtonString"
+        android:textSize="22sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/custom_button2"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+</LinearLayout>

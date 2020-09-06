@@ -25,6 +25,13 @@
     <string name="logoutInSettingsString">Logout</string>
     <string name="searchButtonString">Search</string>
     <string name="be_a_donorString">Be a Donor</string>
+    <string name="blood_groupString">Blood Group</string>
+    <string name="search_distanceString">Search Distance</string>
+    <string name="blood_bank_activityString">Blood Bank Activity</string>
+    <string name="blood_bankString">Blood Bank</string>
+    <string name="searchString">Search</string>
+    <string name="settingsString">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
+
 
 </resources>

@@ -5,12 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-
-import com.google.firebase.auth.PhoneAuthProvider;
-
-import java.util.concurrent.TimeUnit;
 
 public class PhoneAuth1 extends AppCompatActivity {
 
@@ -21,13 +16,11 @@ public class PhoneAuth1 extends AppCompatActivity {
         setContentView(R.layout.activity_phone_auth1);
 
         phoneEditText = findViewById(R.id.phoneEditText);
-
         findViewById(R.id.requestVerification).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
 
                 String phoneNumber = phoneEditText.getText().toString().trim();
-
                 if(phoneNumber.isEmpty() || phoneNumber.length() < 10){
                     phoneEditText.setError("Enter a valid Phone Number");
                     phoneEditText.requestFocus();
