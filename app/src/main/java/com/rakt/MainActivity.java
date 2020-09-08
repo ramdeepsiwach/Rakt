@@ -23,6 +23,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openPhoneAuth1(View view) {
-        startActivity(new Intent(this,HomeActivity.class));
+        startActivity(new Intent(this,PhoneAuth1.class));
     }
 }
