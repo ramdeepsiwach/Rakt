@@ -3,13 +3,13 @@
 
     <item android:title="@string/blood_bankString"
         android:icon="@drawable/ic_blood_drop"
-        android:id="@+id/bloodBankFragment"/>
+        android:id="@+id/bloodBankActivity"/>
 
     <item android:title="@string/searchString"
         android:icon="@drawable/ic_search"
-        android:id="@+id/searchFragment"/>
+        android:id="@+id/HomeActivity"/>
 
     <item android:title="@string/settingsString"
         android:icon="@drawable/ic_settings"
-        android:id="@+id/settingsFragment"/>
+        android:id="@+id/settingsActivity"/>
 </menu>

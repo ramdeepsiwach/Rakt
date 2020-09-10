@@ -20,7 +20,6 @@ public class CustomDialogClass extends Dialog implements View.OnClickListener {
         super(a);
         this.c = a;
     }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +51,5 @@ public class CustomDialogClass extends Dialog implements View.OnClickListener {
             String s2=distanceDropDown.getSelectedItem().toString();
             Toast.makeText(getContext(),"Search tapped "+s1+" "+s2,Toast.LENGTH_LONG).show();
         }
-
     }
 }
