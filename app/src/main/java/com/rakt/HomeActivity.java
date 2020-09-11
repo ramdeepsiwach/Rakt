@@ -1,6 +1,7 @@
 package com.rakt;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,12 +46,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     FirebaseDatabase database;
     DatabaseReference myRef;
     BottomNavigationView bottomNavigationView;
-    SupportMapFragment supportMapFragment;
-    FusedLocationProviderClient client;
-    private static final int PERMISSIONS_REQUEST = 100;
-    LocationManager mLocationManager;
-    long LOCATION_REFRESH_TIME = 1000;
-    float LOCATION_REFRESH_DISTANCE = 0;
+    private static final int LOCATION_PERMISSION_CODE = 100;
+    private static final int BACKGROUND_LOCATION_PERMISSION_CODE = 101;
+    private LatLng currentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +69,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        bottomNavigationView=findViewById(R.id.bottomNavigationViewHome);
 
+        bottomNavigationView=findViewById(R.id.bottomNavigationViewHome);
         bottomNavigationView.setSelectedItemId(R.id.HomeActivity);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -90,21 +89,66 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        if ((ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) ||
+                (ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)){
+            takeLocationPermission();
+        }else{
+            getLastKnownLocation();
+        }
+    }
+
+    public void takeLocationPermission(){
+        ActivityCompat.requestPermissions(HomeActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_PERMISSION_CODE);
+        ActivityCompat.requestPermissions(HomeActivity.this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},LOCATION_PERMISSION_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(HomeActivity.this,
+                        "Location Permission Granted",
+                        Toast.LENGTH_SHORT)
+                        .show();
+                getLastKnownLocation();
+            } else {
+                Toast.makeText(HomeActivity.this,
+                        "Location Permission Denied",
+                        Toast.LENGTH_SHORT)
+                        .show();
+                takeLocationPermission();
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    public void getLastKnownLocation(){
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                            setupMap();
+                        }
+                    }
+                });
+
+        /**/
+    }
+
+    public void setupMap(){
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
-        client = LocationServices.getFusedLocationProviderClient(this);
-
-        /*if (ActivityCompat.checkSelfPermission(HomeActivity.this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            getCurrentLocation();
-        }else{
-            ActivityCompat.requestPermissions(HomeActivity.this,new String[]
-                    {Manifest.permission.ACCESS_FINE_LOCATION},44);
-
-        }*/
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -132,41 +176,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-    /* private void getCurrentLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        Task<Location> task = client.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(final Location location) {
-                if(location!=null){
-                    supportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                        @Override
-                        public void onMapReady(GoogleMap googleMap) {
-                            LatLng latLng=new LatLng(location.getLatitude(),location.getLongitude());
-                            MarkerOptions options=new MarkerOptions().position(latLng)
-                                    .title("I am there");
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,50));
-                            googleMap.addMarker(options);
-                        }
-                    });
-                }
-            }
-        });
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode==44){
-            if(grantResults.length>0 & grantResults[0]==PackageManager.PERMISSION_GRANTED){
-                getCurrentLocation();
-            }
-        }
-    } */
+
     @Override
     public void onMapReady(GoogleMap mMap) {
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.addMarker(new MarkerOptions().position(currentLocation).title("Yes. This is you."));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(currentLocation)      // Sets the center of the map to Mountain View
+                .zoom(14)               // Sets the orientation of the camera to east
+                .tilt(80)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 }
