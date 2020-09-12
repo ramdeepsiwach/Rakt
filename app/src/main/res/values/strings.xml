@@ -33,6 +33,9 @@
     <string name="blood_bankString">Blood Bank</string>
     <string name="searchString">Search</string>
     <string name="settingsString">Settings</string>
+    <string name="remove_location_updates">RemoveLocUpdate</string>
+    <string name="launch_activity">LaunchLoc</string>
+    <string name="location_updated">Hello, %1$s! You have new messages.</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 
