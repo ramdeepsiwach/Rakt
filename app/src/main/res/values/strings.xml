@@ -10,8 +10,7 @@
     <string name="prefixNumber">+91</string>
     <string name="mobileNumberInput"></string>
     <string name="wave2image">wave2image</string>
-    <string name="google_maps_key">
-    AIzaSyAV_3WegQKYrltCn7euNOY9gjXugyXo4Sg</string>
+    <string name="google_maps_key">AIzaSyAV_3WegQKYrltCn7euNOY9gjXugyXo4Sg</string>
     <string name="verify">Verify</string>
     <string name="enter_otp_hint">One Time Password</string>
     <string name="accountInSettingsString">Account</string>

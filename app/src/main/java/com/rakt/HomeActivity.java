@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     SupportMapFragment mapFragment;
     BottomNavigationView bottomNavigationView;
     private static final int LOCATION_PERMISSION_CODE = 100;
-    private static final int BACKGROUND_LOCATION_PERMISSION_CODE = 101;
+    //private static final int BACKGROUND_LOCATION_PERMISSION_CODE = 101;
     private LatLng currentLocation;
 
     @Override
@@ -188,7 +188,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
     //Reposition My Location Button
     private void setMyLocationPosition() {
-        View myLocationButton = ((View) mapFragment.getView().findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+        View myLocationButton = ((View) mapFragment.requireView().findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
         RelativeLayout.LayoutParams myLocationPosition = (RelativeLayout.LayoutParams) myLocationButton.getLayoutParams();
         myLocationPosition.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
         myLocationPosition.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,0);
@@ -197,7 +197,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         myLocationPosition.setMargins(0, 0, 0, 70);
         myLocationPosition.setMarginStart(20);
 
-        View myLocationCompass = ((View) mapFragment.getView().findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("5"));
+        View myLocationCompass = ((View) mapFragment.requireView().findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("5"));
         RelativeLayout.LayoutParams myCompassPosition = (RelativeLayout.LayoutParams) myLocationCompass.getLayoutParams();
         myCompassPosition.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
         myCompassPosition.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM,RelativeLayout.TRUE);
