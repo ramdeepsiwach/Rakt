@@ -20,12 +20,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
         //buttons
         logOutButton=findViewById(R.id.logOutButton);
-
         bottomNavigationView=findViewById(R.id.bottomNavigationViewSettings);
-        bottomNavigationView.setSelectedItemId(R.id.HomeActivity);
+        bottomNavigationView.setSelectedItemId(R.id.settingsActivity);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

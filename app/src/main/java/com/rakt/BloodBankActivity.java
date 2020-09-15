@@ -18,7 +18,7 @@ public class BloodBankActivity extends AppCompatActivity {
         setContentView(R.layout.activity_blood_bank);
         bottomNavigationViewBloodBank=findViewById(R.id.bottomNavigationViewBloodBank);
 
-        bottomNavigationViewBloodBank.setSelectedItemId(R.id.HomeActivity);
+        bottomNavigationViewBloodBank.setSelectedItemId(R.id.bloodBankActivity);
         bottomNavigationViewBloodBank.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
