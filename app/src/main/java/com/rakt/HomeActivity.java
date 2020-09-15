@@ -170,8 +170,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     @Override
+    @SuppressLint("MissingPermission")
     public void onMapReady(GoogleMap mMap) {
-        mMap.addMarker(new MarkerOptions().position(currentLocation).title("Yes. This is you."));
+        //mMap.addMarker(new MarkerOptions().position(currentLocation).title("Yes. This is you."));
         //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(currentLocation)      // Sets the center of the map to Mountain View
@@ -180,9 +181,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 .build();                   // Creates a CameraPosition from the builder
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
         mMap.setMyLocationEnabled(true);
         setMyLocationPosition();
     }

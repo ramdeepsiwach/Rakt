@@ -14,6 +14,14 @@
     AIzaSyAV_3WegQKYrltCn7euNOY9gjXugyXo4Sg</string>
     <string name="verify">Verify</string>
     <string name="enter_otp_hint">One Time Password</string>
+    <string name="wave3">wave3</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="Name">Name</string>
+    <string name="Email">Email</string>
+    <string name="BloodGroup">Blood Group</string>
+    <string name="Age">Age</string>
+    <string name="Address">Address</string>
+    <string name="WillingToDonateBlood">Willing to Donate Blood?</string>
     <string name="accountInSettingsString">Account</string>
     <string name="optionsInSettingsString">Options</string>
     <string name="edit_profileInSettingsString">Edit Profile</string>
