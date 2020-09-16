@@ -38,7 +38,7 @@ import androidx.core.app.ActivityCompat;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
     protected Button searchButton, donorButton;
-    ImageButton editProfileButton;
+    ImageButton showProfileButton;
     FirebaseAuth auth;
     FirebaseUser user;
     FirebaseDatabase database;
@@ -56,11 +56,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         //Intialize button
         searchButton = findViewById(R.id.searchDialogButton);
-        editProfileButton = findViewById(R.id.editProfileFromSearchBarButton);
+        showProfileButton = findViewById(R.id.showProfileFromSearchBarButton);
         donorButton = findViewById(R.id.donorButton);
 
         //Set Click listeners
-        editProfileButton.setOnClickListener(this);
+        showProfileButton.setOnClickListener(this);
         searchButton.setOnClickListener(this);
         donorButton.setOnClickListener(this);
 
@@ -158,9 +158,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 window.setAttributes(wlp);
                 dialog.show();
                 break;
-
-            case R.id.editProfileFromSearchBarButton:
+            case R.id.showProfileFromSearchBarButton:
                 Toast.makeText(this, "Edit Profile Button Clicked", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(HomeActivity.this,UserProfileActivity.class));
                 break;
             case R.id.donorButton:
                 Toast.makeText(this, "Become a Donor Button Clicked", Toast.LENGTH_LONG).show();

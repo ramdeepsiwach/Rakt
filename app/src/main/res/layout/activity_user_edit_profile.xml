@@ -36,35 +36,23 @@
             android:text="@string/phone_numberString"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
+            android:hint="@string/phone_numberString"
             app:layout_constraintEnd_toStartOf="@+id/userProfilePic"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backFromUserProfileToHome" />
+            app:layout_constraintTop_toBottomOf="@+id/backFromEditProfileToSettings"
+            android:autofillHints=""/>
 
         <Button
-            android:id="@+id/backFromUserProfileToHome"
+            android:id="@+id/backFromEditProfileToSettings"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/back_button"
             android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/editProfileFromUserProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:drawableEnd="@drawable/ic_edit"
-            android:drawablePadding="5dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/edit_profile"
-            android:textColor="#80FFFFFF"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/phoneNumber"
-            app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
         <ImageView
             android:id="@+id/userProfilePic"
@@ -77,10 +65,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
             android:contentDescription="@null" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,30 +75,35 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="30dp"
+        android:autofillHints=""
         android:background="@drawable/custom_edit_text"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/Name"
+        android:inputType="textPersonName"
+        android:maxLength="30"
         android:padding="15dp"
         android:text=""
         android:textColor="#000000"
         android:textSize="18sp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/introPanel" />
 
-    <TextView
-        android:id="@+id/emailTextView"
+    <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:background="@drawable/custom_edit_text"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/Email"
+        android:inputType="textEmailAddress"
+        android:maxLength="50"
         android:padding="15dp"
         android:text=""
         android:textColor="#000000"
@@ -120,7 +112,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
-
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -131,50 +122,57 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailTextView">
+        app:layout_constraintTop_toBottomOf="@+id/email">
 
-        <TextView
+        <EditText
             android:id="@+id/bloodGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:autofillHints=""
             android:background="@drawable/custom_edit_text"
             android:ems="10"
             android:fontFamily="@font/roboto"
             android:hint="@string/BloodGroup"
+            android:inputType="text"
             android:padding="15dp"
             android:text=""
             android:textColor="#000000"
             android:textSize="18sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
+            android:autofillHints=""
             android:background="@drawable/custom_edit_text"
             android:ems="10"
             android:fontFamily="@font/roboto"
             android:hint="@string/Age"
+            android:inputType="number"
+            android:maxLength="5"
             android:padding="15dp"
             android:text=""
             android:textColor="#000000"
             android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <EditText
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:background="@drawable/custom_edit_text"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/Address"
+        android:inputType="textPostalAddress"
         android:maxLength="50"
         android:padding="15dp"
         android:text=""
@@ -184,7 +182,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-    <TextView
+    <CheckBox
         android:id="@+id/check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -192,15 +190,61 @@
         android:layout_marginEnd="30dp"
         android:layout_marginTop="16dp"
         android:button="@null"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
         android:fontFamily="@font/roboto"
         android:padding="15dp"
-        android:text="@string/donorMessageString"
+        android:text="@string/WillingToDonateBlood"
         android:textColor="#80000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address"
         app:layout_constraintVertical_bias="0.050000012" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check">
+
+        <Button
+            android:id="@+id/saveButton"
+            android:background="@drawable/custom_button2"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="#FFFFFF"
+            android:text="@string/saveString"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:background="@drawable/custom_button2"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="#FFFFFF"
+            android:text="@string/cancelString"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

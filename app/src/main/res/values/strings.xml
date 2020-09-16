@@ -43,6 +43,10 @@
     <string name="remove_location_updates">RemoveLocUpdate</string>
     <string name="launch_activity">LaunchLoc</string>
     <string name="location_updated">Hello, %1$s! You have new messages.</string>
+    <string name="phone_numberString">+91 XXXXXXXXX</string>
+    <string name="saveString">Save</string>
+    <string name="cancelString">Cancel</string>
+    <string name="donorMessageString">You are not a donor yet ?\nWilling to donate blood ? \nEdit your profile...</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 

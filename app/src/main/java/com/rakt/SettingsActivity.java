@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
-    Button logOutButton;
+    Button logOutButton,editProfileButton;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -22,6 +22,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_settings);
         //buttons
         logOutButton=findViewById(R.id.logOutButton);
+        editProfileButton=findViewById(R.id.editProfileButton);
+
+        logOutButton.setOnClickListener(this);
+        editProfileButton.setOnClickListener(this);
         bottomNavigationView=findViewById(R.id.bottomNavigationViewSettings);
         bottomNavigationView.setSelectedItemId(R.id.settingsActivity);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,6 +51,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             case R.id.logOutButton:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(this,MainActivity.class));
+            case R.id.editProfileButton:
+                startActivity(new Intent(SettingsActivity.this,UserEditProfile.class));
         }
     }
 }

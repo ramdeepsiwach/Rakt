@@ -48,7 +48,7 @@
             android:textSize="22sp" />
 
         <ImageButton
-            android:id="@+id/editProfileFromSearchBarButton"
+            android:id="@+id/showProfileFromSearchBarButton"
             android:layout_gravity="center_vertical|end"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
