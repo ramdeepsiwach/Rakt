@@ -11,6 +11,8 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.rakt.Database.Common;
+import com.rakt.Database.CurrentUser;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
     Button logOutButton,editProfileButton;
@@ -50,9 +52,13 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         switch (view.getId()){
             case R.id.logOutButton:
                 FirebaseAuth.getInstance().signOut();
+                Common.currentUser=null;
                 startActivity(new Intent(this,MainActivity.class));
+                finish();
+                break;
             case R.id.editProfileButton:
                 startActivity(new Intent(SettingsActivity.this,UserEditProfile.class));
+                break;
         }
     }
 }

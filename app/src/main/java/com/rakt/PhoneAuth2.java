@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +20,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.rakt.Database.Common;
+import com.rakt.Database.CurrentUser;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class PhoneAuth2 extends AppCompatActivity {
@@ -28,6 +37,9 @@ public class PhoneAuth2 extends AppCompatActivity {
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private EditText otpEditText;
     private FirebaseAuth mAuth;
+    DatabaseReference db;
+    CurrentUser user;
+    private String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +50,9 @@ public class PhoneAuth2 extends AppCompatActivity {
         otpEditText = findViewById(R.id.otpEditText);
 
         Intent intent = getIntent();
-        final String phoneNumber = intent.getStringExtra("phoneNumber");
+        phoneNumber = intent.getStringExtra("phoneNumber");
 
-        ((EditText)findViewById(R.id.phoneEditText)).setText(phoneNumber);
+        ((TextView)findViewById(R.id.phoneEditText)).setText(phoneNumber);
         sendVerificationCode(phoneNumber);
 
         findViewById(R.id.verify).setOnClickListener(new View.OnClickListener() {
@@ -143,6 +155,24 @@ public class PhoneAuth2 extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //verification successful we will start the profile activity
+                            db=FirebaseDatabase.getInstance().getReference(Common.USER_REF);
+                            db.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.child(Objects.requireNonNull(mAuth.getUid())).exists()){
+                                        user=snapshot.child(mAuth.getUid()).getValue(CurrentUser.class);
+                                    }else{
+                                        user=new CurrentUser(mAuth.getUid(),phoneNumber,"NA","NA","NA","NA","NA","false");
+                                        db.child(mAuth.getUid()).setValue(user);
+                                    }
+                                    Common.currentUser=user;
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(getApplicationContext(),""+error.getMessage(),Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
                             Intent intent = new Intent(PhoneAuth2.this, HomeActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
@@ -150,7 +180,6 @@ public class PhoneAuth2 extends AppCompatActivity {
                         } else {
 
                             //verification unsuccessful.. display an error message
-
                             String message = "Something is wrong, we will fix it soon...";
 
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {

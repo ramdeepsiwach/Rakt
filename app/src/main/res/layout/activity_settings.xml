@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
-
     <TextView
         android:id="@+id/optionTextView"
         android:layout_width="wrap_content"
@@ -25,13 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="312dp"
         android:fontFamily="@font/roboto"
         android:text="@string/accountInSettingsString"
         android:textColor="#711E1E"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/editProfileButton"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editProfileButton"
         app:layout_constraintTop_toBottomOf="@+id/optionTextView" />
 
@@ -89,7 +85,6 @@
         android:textColor="#711E1E"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/notificationsButton"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/notificationsButton"
         app:layout_constraintTop_toBottomOf="@+id/changePhoneNumberButton" />
 
@@ -142,13 +137,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="337dp"
         android:fontFamily="@font/roboto"
         android:text="@string/moreInSettingsString"
         android:textColor="#711E1E"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/aboutButton"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/aboutButton"
         app:layout_constraintTop_toBottomOf="@+id/changeLanguageButton" />
 

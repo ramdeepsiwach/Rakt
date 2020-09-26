@@ -1,17 +1,28 @@
-package com.rakt;
+package com.rakt.Database;
 
-public class UserClass {
-    private String phoneNumber,userName,userEmail,bloodGroup,userAge,userAddress;
-    private boolean isDonor;
+public class CurrentUser {
+    private String uid,phoneNumber,userName,userEmail,bloodGroup,userAge,userAddress,donor;
 
-    public UserClass(String phoneNumber, String userName, String userEmail, String bloodGroup, String userAge, String userAddress, boolean isDonor) {
+    public CurrentUser() {
+    }
+
+    public CurrentUser(String uid, String phoneNumber, String userName, String userEmail, String bloodGroup, String userAge, String userAddress, String donor) {
+        this.uid = uid;
         this.phoneNumber = phoneNumber;
         this.userName = userName;
         this.userEmail = userEmail;
         this.bloodGroup = bloodGroup;
         this.userAge = userAge;
         this.userAddress = userAddress;
-        this.isDonor = isDonor;
+        this.donor = donor;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getPhoneNumber() {
@@ -62,11 +73,11 @@ public class UserClass {
         this.userAddress = userAddress;
     }
 
-    public boolean isDonor() {
-        return isDonor;
+    public String getDonor() {
+        return donor;
     }
 
-    public void setDonor(boolean donor) {
-        isDonor = donor;
+    public void setDonor(String donor) {
+        this.donor = donor;
     }
 }

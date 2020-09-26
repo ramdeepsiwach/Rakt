@@ -29,8 +29,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.rakt.Database.Common;
+
+import java.util.EventListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +48,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected Button searchButton, donorButton;
     ImageButton showProfileButton;
     FirebaseAuth auth;
-    FirebaseUser user;
+    //FirebaseUser user;
     FirebaseDatabase database;
     DatabaseReference myRef;
     SupportMapFragment mapFragment;
@@ -66,7 +74,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         //Database intialize
         auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
+        //user = auth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
 
         bottomNavigationView = findViewById(R.id.bottomNavigationViewHome);
@@ -159,13 +167,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 dialog.show();
                 break;
             case R.id.showProfileFromSearchBarButton:
-                Toast.makeText(this, "Edit Profile Button Clicked", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(HomeActivity.this,UserProfileActivity.class));
                 break;
             case R.id.donorButton:
                 Toast.makeText(this, "Become a Donor Button Clicked", Toast.LENGTH_LONG).show();
-                myRef = database.getReference("users/" + user.getUid());
-                myRef.setValue("Donor");
+                //myRef = database.getReference("users/" + user.getUid());
+                //myRef.setValue("Donor");
                 break;
         }
     }
