@@ -5,27 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rakt.Database.Common;
 
 public class UserProfileActivity extends AppCompatActivity {
-    TextView phoneNumber,userName,userEmail,bloodGroupProfile,userAge,userAddress,donorMessageTextview;
+    TextView phoneNumber;
+    EditText userName,userEmail,bloodGroup,userAge,userAddress;
+    CheckBox isDonor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        //define all the textViews
         phoneNumber=findViewById(R.id.phoneNumberTextView);
-        userName=findViewById(R.id.userNameTextView);
-        userEmail=findViewById(R.id.userEmailTextView);
-        bloodGroupProfile=findViewById(R.id.bloodGroupProfileTextView);
-        userAge=findViewById(R.id.userAgeTextView);
-        userAddress=findViewById(R.id.userAddressTextView);
-        donorMessageTextview=findViewById(R.id.donorMessageTextview);
+        userName=findViewById(R.id.userNameEditText);
+        userEmail=findViewById(R.id.userEmailEditText);
+        bloodGroup=findViewById(R.id.bloodGroupEditText);
+        userAge=findViewById(R.id.userAgeEditText);
+        userAddress=findViewById(R.id.userAddressEditText);
+        isDonor=findViewById(R.id.donorCheckBox);
 
         //Toast.makeText(getApplicationContext(),Common.currentUser.getUserAddress(),Toast.LENGTH_LONG).show();
 
@@ -33,14 +36,14 @@ public class UserProfileActivity extends AppCompatActivity {
             setProfileData();
 
         //Buttons and set on click listener
-        findViewById(R.id.editProfileFromUserProfile).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.editProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(UserProfileActivity.this,UserEditProfile.class));
+
             }
         });
 
-        findViewById(R.id.backFromUserProfileToHome).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.backToHome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(UserProfileActivity.this,HomeActivity.class));
@@ -48,7 +51,6 @@ public class UserProfileActivity extends AppCompatActivity {
         });
     }
 
-    //Set data to profile textviews
     private void setProfileData() {
         phoneNumber.setText(new StringBuilder("+91 ").append(Common.currentUser.getPhoneNumber()));
 
@@ -63,9 +65,9 @@ public class UserProfileActivity extends AppCompatActivity {
             userEmail.setText(Common.currentUser.getUserEmail());
 
         if(Common.currentUser.getBloodGroup()==null || Common.currentUser.getBloodGroup().equals("NA"))
-            bloodGroupProfile.setText("");
+            bloodGroup.setText("");
         else
-            bloodGroupProfile.setText(Common.currentUser.getBloodGroup());
+            bloodGroup.setText(Common.currentUser.getBloodGroup());
 
         if(Common.currentUser.getUserAge()==null || Common.currentUser.getUserAge().equals("NA"))
             userAge.setText("");
