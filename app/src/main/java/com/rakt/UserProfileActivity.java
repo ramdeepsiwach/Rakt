@@ -23,7 +23,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.rakt.Database.Common;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener {
     TextView phoneNumber;
@@ -129,25 +133,56 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void updateProfile() {
+        Set<String> bloodGroups = new HashSet<>();
+        bloodGroups.add("A+");
+        bloodGroups.add("A-");
+        bloodGroups.add("B+");
+        bloodGroups.add("B-");
+        bloodGroups.add("AB+");
+        bloodGroups.add("AB-");
+        bloodGroups.add("O+");
+        bloodGroups.add("O-");
+        final String uName = userName.getText().toString(), uEmail = userEmail.getText().toString(), uBloodGroup = bloodGroup.getText().toString(),
+                uAge = userAge.getText().toString(), uAddress = userAddress.getText().toString();
+
+        String emailRegex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(uEmail);
+        if(!matcher.matches()){
+            Toast.makeText(getApplicationContext(),"Invalid Email",Toast.LENGTH_SHORT).show();
+            setProfileData();
+            return;
+        }
+        if(!bloodGroups.contains(uBloodGroup)){
+            Toast.makeText(getApplicationContext(),"Invalid Blood Group",Toast.LENGTH_SHORT).show();
+            setProfileData();
+            return;
+        }
+        if(Integer.parseInt(uAge)<18){
+            Toast.makeText(getApplicationContext(),"You are too young to join",Toast.LENGTH_SHORT).show();
+            setProfileData();
+            return;
+        }
+
         FirebaseDatabase.getInstance().getReference(Common.USER_REF).child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 Map<String,Object> updateData=new HashMap<>();
-                updateData.put("userName",userName.getText().toString());
-                Common.currentUser.setUserName(userName.getText().toString());
+                updateData.put("userName", uName);
+                Common.currentUser.setUserName(uName);
 
-                updateData.put("userEmail",userEmail.getText().toString());
-                Common.currentUser.setUserEmail(userEmail.getText().toString());
+                updateData.put("userEmail", uEmail);
+                Common.currentUser.setUserEmail(uEmail);
 
-                updateData.put("bloodGroup",bloodGroup.getText().toString());
-                Common.currentUser.setBloodGroup(bloodGroup.getText().toString());
+                updateData.put("bloodGroup", uBloodGroup);
+                Common.currentUser.setBloodGroup(uBloodGroup);
 
-                updateData.put("userAge",userAge.getText().toString());
-                Common.currentUser.setUserAge(userAge.getText().toString());
+                updateData.put("userAge", uAge);
+                Common.currentUser.setUserAge(uAge);
 
-                updateData.put("userAddress",userAddress.getText().toString());
-                Common.currentUser.setUserAddress(userAddress.getText().toString());
+                updateData.put("userAddress", uAddress);
+                Common.currentUser.setUserAddress(uAddress);
 
                 if(isDonor.isChecked()){
                     updateData.put("donor","true");
