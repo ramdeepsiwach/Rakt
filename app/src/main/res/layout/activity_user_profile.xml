@@ -44,10 +44,10 @@
             android:textSize="22sp"
             app:layout_constraintEnd_toStartOf="@+id/userProfilePic"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backToHome" />
+            app:layout_constraintTop_toBottomOf="@+id/backToHomeButton" />
 
         <Button
-            android:id="@+id/backToHome"
+            android:id="@+id/backToHomeButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="10dp"
@@ -59,7 +59,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/editProfile"
+            android:id="@+id/editProfileButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -185,6 +185,7 @@
                         android:autofillHints=""
                         android:background="@null"
                         android:ems="10"
+                        android:enabled="false"
                         android:fontFamily="@font/roboto"
                         android:hint="@string/BloodGroup"
                         android:inputType="text"
@@ -289,6 +290,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30dp"
                     android:background="@drawable/custom_button2"
+                    android:enabled="false"
                     android:fontFamily="@font/roboto"
                     android:paddingStart="30dp"
                     android:paddingEnd="30dp"
@@ -305,6 +307,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/custom_button2"
+                    android:enabled="false"
                     android:fontFamily="@font/roboto"
                     android:paddingStart="30dp"
                     android:paddingEnd="30dp"
