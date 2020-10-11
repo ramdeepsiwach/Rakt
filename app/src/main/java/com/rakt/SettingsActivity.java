@@ -57,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.editProfileButton:
-                startActivity(new Intent(SettingsActivity.this,UserEditProfile.class));
+                startActivity(new Intent(SettingsActivity.this,UserProfileActivity.class));
                 break;
         }
     }
